@@ -15,4 +15,14 @@ public class Photo {
         this.location = location;
         this.tags = tags;
     }
+
+    public Set<String> getTags() {
+        return tags;
+    }
+    public String getLocation() {
+        return location;
+    }
+    public LocalDate getDate() {
+        return date;
+    }
 }
