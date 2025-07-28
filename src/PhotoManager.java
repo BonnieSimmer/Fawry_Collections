@@ -39,9 +39,14 @@ public class PhotoManager {
     }
     public ArrayList<Photo> searchByLocation(String location) {
         ArrayList<Photo> neededPhotos = new ArrayList<>();
+        CoordinatesZone zone = zones.get(location);
         for (Photo photo : photos) {
-            if (photo.getLocation().equals(location)) {
+            if (!photo.getLocation().isEmpty() && photo.getLocation().equals(location)) {
                 neededPhotos.add(photo);
+            } else if (photo.getLocation().isEmpty()) {
+                if (CoordinatesZone.inZone(photo, zone.getLatitude(), zone.getLongitude(), zone.getRadius())) {
+                    neededPhotos.add(photo);
+                }
             }
         }
         return neededPhotos;
@@ -67,6 +72,9 @@ public class PhotoManager {
             }
         }
         return neededPhotos;
+    }
+    public static Map<String, CoordinatesZone> getZones() {
+        return zones;
     }
 
 

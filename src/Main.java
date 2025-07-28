@@ -17,10 +17,12 @@ public class Main {
 
         manager.uploadPhoto(new Photo("4", "museum.jpg", LocalDate.of(2023, 5, 15),
                 "Cairo", Set.of("museum", "antiquities", "egypt", "pharaohs")));
+        manager.uploadPhoto(new Photo("5", "beach.jpg", LocalDate.of(2025,7,28),
+                31.2, 29.95, Set.of("Beach", "egypt", "Fish")));
 
         // Search by single tag
         System.out.println("Photos with tag 'egypt':");
-        manager.searchByTag("egypt").forEach(System.out::println); // All 4 photos
+        manager.searchByTag("egypt").forEach(System.out::println); // All 5 photos
 
         // Search by date
         System.out.println("Photos taken on 2023-04-22:");
@@ -29,6 +31,8 @@ public class Main {
         // Search by location
         System.out.println("Photos taken in Cairo:");
         manager.searchByLocation("Cairo").forEach(System.out::println); // 3 photos
+        System.out.println("Photos taken in Alexandria:");
+        manager.searchByLocation("Alexandria").forEach(System.out::println); // 1 photo
 
         // Search by multiple tags
         System.out.println("Photos with tags [egypt, museum]:"); // I changed it to an AND relation between the tags but I had it as an OR relation

@@ -1,6 +1,3 @@
-import java.util.HashMap;
-import java.util.Map;
-
 public class CoordinatesZone {
     private double latitude;
     private double longitude;
@@ -20,5 +17,23 @@ public class CoordinatesZone {
         double a = Math.pow(Math.sin(latDistance / 2), 2) + Math.cos(Math.toRadians(latitude)) * Math.cos(Math.toRadians(search_lat)) * Math.pow(Math.sin(lonDistance / 2), 2);
         double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
         return (EARTH_RADIUS_M * c) <= (radius * 1000); // Return true if location specified is inside the zone.
+    }
+    public static boolean inZone(Photo photo,double search_lat, double search_lon, double radius) {
+        final int EARTH_RADIUS_M = 6378137;
+        double latDistance = Math.toRadians(search_lat - photo.getLatitude());
+        double lonDistance = Math.toRadians(search_lon - photo.getLongitude());
+        double a = Math.pow(Math.sin(latDistance / 2), 2) + Math.cos(Math.toRadians(photo.getLatitude())) * Math.cos(Math.toRadians(search_lat)) * Math.pow(Math.sin(lonDistance / 2), 2);
+        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        return (EARTH_RADIUS_M * c) <= (radius * 1000); // Return true if location specified is inside the zone.
+    }
+    public double getLatitude() {
+        return latitude;
+    }
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public double getRadius() {
+        return radius;
     }
 }
