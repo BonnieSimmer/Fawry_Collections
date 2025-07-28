@@ -5,4 +5,5 @@ Bonus: location can be latitude and longitude, and for example, when searching u
 I used Sets and Lists and Maps form the Collections API for this task.
 
 ## Output:
-![Screenshot_20250728_191324.png](../../../../Pictures/Screenshots/Screenshot_20250728_191324.png)
+<img width="1920" height="1032" alt="Screenshot_20250728_192652" src="https://github.com/user-attachments/assets/4e9cee61-f2f2-4c24-9e28-15d4de27d070" />
+
