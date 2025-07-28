@@ -28,12 +28,11 @@ public class Main {
 
         // Search by location
         System.out.println("Photos taken in Cairo:");
-        manager.searchByLocation("Cairo").forEach(System.out::println);
+        manager.searchByLocation("Cairo").forEach(System.out::println); // 3 photos
 
         // Search by multiple tags
-        System.out.println("Photos with tags [egypt, museum]:"); // I understood it as an OR relation with the tags not AND
-        // for AND it would be simple just using .containsAll()
-        manager.searchByMultipleTags(Set.of("egypt", "museum")).forEach(System.out::println);
+        System.out.println("Photos with tags [egypt, museum]:"); // I changed it to an AND relation between the tags but I had it as an OR relation
+        manager.searchByMultipleTags(Set.of("egypt", "museum")).forEach(System.out::println); // 1 photo
 
         // Search by coordinates
         System.out.println("Photos with near latitude:29.88 and longitude:31.14:");

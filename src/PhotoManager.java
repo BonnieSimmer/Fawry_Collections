@@ -62,12 +62,8 @@ public class PhotoManager {
     public ArrayList<Photo> searchByMultipleTags(Set<String> tags) {
         ArrayList<Photo> neededPhotos = new ArrayList<>();
         for (Photo photo : photos) {
-            for (String tag : tags) {
-                if (photo.getTags().contains(tag)) { // we can also use a Set to avoid duplicates but I want to save the order.
-                    if (!neededPhotos.contains(photo)) {
-                        neededPhotos.add(photo);
-                    }
-                }
+            if (photo.getTags().containsAll(tags)) {
+                neededPhotos.add(photo);
             }
         }
         return neededPhotos;
