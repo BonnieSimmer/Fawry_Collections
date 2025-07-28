@@ -2,19 +2,17 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class CoordinatesZone {
-    private String location;
     private double latitude;
     private double longitude;
     private double radius;
 
-    public CoordinatesZone(String location, double latitude, double longitude, double radius) {
-        this.location = location;
+    public CoordinatesZone(double latitude, double longitude, double radius) {
         this.latitude = latitude;
         this.longitude = longitude;
         this.radius = radius;
     }
 
-    public boolean distance(double search_lat, double search_lon) {
+    public boolean isInZone(double search_lat, double search_lon) {
         final int EARTH_RADIUS = 6378137; // I did this function before but in embedded C for a uni project.
         // I am assuming that the latitude and longitude are both in degree decimal.
         double latDistance = Math.toRadians(search_lat - latitude);
