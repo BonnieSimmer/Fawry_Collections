@@ -1,6 +1,5 @@
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
@@ -8,9 +7,9 @@ public class PhotoManager {
     private ArrayList<Photo> photos; // I chose a list as photos can be duplicated in a photo manager
 
     private static Map<String,CoordinatesZone> zones = Map.of (
-            "Cairo", new CoordinatesZone( 30.0444, 31.2357, 30),
-            "Alexandria", new CoordinatesZone(31.2001, 29.9187, 20),
-            "Giza", new CoordinatesZone(29.9870, 31.2118, 15)
+            "Cairo", new CoordinatesZone( 30.0444, 31.2357, 20),
+            "Alexandria", new CoordinatesZone(31.2001, 29.9187, 30),
+            "Giza", new CoordinatesZone(29.987, 31.2118, 15)
     );
 
     public PhotoManager() {
@@ -24,7 +23,7 @@ public class PhotoManager {
         ArrayList<Photo> neededPhotos = new ArrayList<>();
         for (Photo photo : photos) {
             if (photo.getTags().contains(tag)) {
-                neededPhotos.add(photo);
+                    neededPhotos.add(photo);
             }
         }
         return neededPhotos;
@@ -64,8 +63,10 @@ public class PhotoManager {
         ArrayList<Photo> neededPhotos = new ArrayList<>();
         for (Photo photo : photos) {
             for (String tag : tags) {
-                if (photo.getTags().contains(tag)) {
-                    neededPhotos.add(photo);
+                if (photo.getTags().contains(tag)) { // we can also use a Set to avoid duplicates but I want to save the order.
+                    if (!neededPhotos.contains(photo)) {
+                        neededPhotos.add(photo);
+                    }
                 }
             }
         }

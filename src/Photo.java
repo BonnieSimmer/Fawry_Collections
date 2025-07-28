@@ -25,4 +25,9 @@ public class Photo {
     public LocalDate getDate() {
         return date;
     }
+
+    @Override
+    public String toString() {
+        return id + " " + name + " " + date + " " + location;
+    }
 }
